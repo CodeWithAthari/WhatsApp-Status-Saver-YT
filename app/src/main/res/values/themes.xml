@@ -1,0 +1,14 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.StatusSaver" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <item name="fontFamily">@font/helvetice_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Theme.StatusSaver" parent="Base.Theme.StatusSaver" />
+</resources>
