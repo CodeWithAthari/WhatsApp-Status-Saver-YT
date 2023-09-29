@@ -33,14 +33,20 @@ Discover a comprehensive toolkit that enables efficient status management and an
 ## Screenshots
 #### Light Mode
 
-Splash | Images Status | Video Status | Settings | Image Preview | Video Preview
---- | --- | --- |--- |--- |--- 
-![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/1-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/2-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/3-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/4-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/5-day.webp)  |![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/6-day.webp) 
+Splash | Images Status | Video Status 
+--- | --- | --- 
+![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/1-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/2-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/3-day.webp) 
 
+Settings | Image Preview | Video Preview
+|--- |--- |--- 
+| ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/4-day.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/5-day.webp)  |![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/6-day.webp) 
 #### Night Mode
 
-Splash | Images Status | Video Status | Settings | Image Preview | Video Preview
---- | --- | --- |--- |--- |--- 
-![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/1-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/2-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/3-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/4-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/5-Night.webp)  |![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/6-Night.webp) 
+Splash | Images Status | Video Status 
+|--- |--- |--- 
+![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/1-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/2-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/3-Night.webp) 
 
+Settings | Image Preview | Video Preview
+|--- |--- |--- 
+![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/4-Night.webp) | ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/5-Night.webp)  |![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/6-Night.webp) 
 
