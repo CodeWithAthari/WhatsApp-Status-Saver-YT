@@ -1,14 +1,20 @@
 package com.devatrii.statussaver.views.activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.devatrii.statussaver.R
 import com.devatrii.statussaver.databinding.ActivityMainBinding
 import com.devatrii.statussaver.utils.Constants
+import com.devatrii.statussaver.utils.SharedPrefKeys
 import com.devatrii.statussaver.utils.SharedPrefUtils
 import com.devatrii.statussaver.utils.replaceFragment
 import com.devatrii.statussaver.utils.slideFromStart
@@ -28,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         SharedPrefUtils.init(activity)
         binding.apply {
             splashLogic()
+            requestPermission()
             val fragmentWhatsAppStatus = FragmentStatus()
             val bundle = Bundle()
             bundle.putString(Constants.FRAGMENT_TYPE_KEY, Constants.TYPE_WHATSAPP_MAIN)
@@ -63,6 +70,44 @@ class MainActivity : AppCompatActivity() {
                 return@setOnItemSelectedListener true
             }
 
+        }
+    }
+
+    private val PERMISSION_REQUEST_CODE = 50
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
+            val isPermissionsGranted = SharedPrefUtils.getPrefBoolean(
+                SharedPrefKeys.PREF_KEY_IS_PERMISSIONS_GRANTED,
+                false
+            )
+            if (!isPermissionsGranted) {
+                ActivityCompat.requestPermissions(
+                    /* activity = */ activity,
+                    /* permissions = */ arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    /* requestCode = */ PERMISSION_REQUEST_CODE
+                )
+                Toast.makeText(activity, "Please Grant Permissions", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val isGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+            if (isGranted) {
+                SharedPrefUtils.putPrefBoolean(SharedPrefKeys.PREF_KEY_IS_PERMISSIONS_GRANTED, true)
+            } else {
+                SharedPrefUtils.putPrefBoolean(
+                    SharedPrefKeys.PREF_KEY_IS_PERMISSIONS_GRANTED,
+                    false
+                )
+
+            }
         }
     }
 

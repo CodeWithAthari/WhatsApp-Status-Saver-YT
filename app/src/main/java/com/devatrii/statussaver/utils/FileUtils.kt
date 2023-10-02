@@ -2,12 +2,18 @@ package com.devatrii.statussaver.utils
 
 import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.net.toUri
+import androidx.documentfile.provider.DocumentFile
+import com.anggrayudi.storage.file.toRawFile
 import com.devatrii.statussaver.R
 import com.devatrii.statussaver.models.MediaModel
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 fun Context.isStatusExist(fileName: String): Boolean {
     val downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
@@ -16,19 +22,23 @@ fun Context.isStatusExist(fileName: String): Boolean {
 }
 
 
-fun getFileExtension(fileName:String):String{
+fun getFileExtension(fileName: String): String {
     val lastDotIndex = fileName.lastIndexOf(".")
 
-    if (lastDotIndex >= 0 && lastDotIndex < fileName.length-1){
-        return  fileName.substring(lastDotIndex+1)
+    if (lastDotIndex >= 0 && lastDotIndex < fileName.length - 1) {
+        return fileName.substring(lastDotIndex + 1)
     }
-    return  ""
+    return ""
 }
 
 fun Context.saveStatus(model: MediaModel): Boolean {
-    if (isStatusExist(model.fileName)){
+    if (isStatusExist(model.fileName)) {
         return true
     }
+    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
+        return saveStatusBeforeQ(this,Uri.parse(model.pathUri))
+    }
+
     val extension = getFileExtension(model.fileName)
     val mimeType = "${model.type}/$extension"
     val inputStream = contentResolver.openInputStream(model.pathUri.toUri())
@@ -60,3 +70,64 @@ fun Context.saveStatus(model: MediaModel): Boolean {
     }
     return false
 }
+
+private fun saveStatusBeforeQ(context: Context, uri: Uri): Boolean {
+    // converting doc file to file
+    try {
+        val documentFile = DocumentFile.fromTreeUri(context, uri)
+        if (documentFile != null) {
+            val sourceFile = documentFile.toRawFile(context)?.takeIf { f2 ->
+                f2.canRead()
+            }
+            val destinationFile = sourceFile?.let { sourceF ->
+                File(
+                    "${Environment.getExternalStorageDirectory()}/Documents/${context.getString(R.string.app_name)}",
+                    sourceF.name
+                )
+            }
+
+            destinationFile?.let { destFile ->
+                // making dirs & file
+                if (!destFile.parentFile?.exists()!!) {
+                    destFile.mkdirs()
+                }
+                if (!destFile.exists()) {
+                    destFile.createNewFile()
+                }
+
+                // copying content from dest file to source file
+                val source = FileInputStream(sourceFile).channel
+                val destination = FileOutputStream(destFile).channel
+
+                destination.transferFrom(source, 0, source.size())
+                source.close()
+                destination.close()
+
+
+                return true
+
+            }
+        }
+        return false
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return false
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
