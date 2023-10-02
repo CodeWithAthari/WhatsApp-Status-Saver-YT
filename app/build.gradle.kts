@@ -57,5 +57,7 @@ dependencies {
     implementation ("androidx.documentfile:documentfile:1.0.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+    implementation ("com.anggrayudi:storage:1.5.5")
+
 
 }

@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.MutableLiveData
+import com.anggrayudi.storage.file.toRawFile
 import com.devatrii.statussaver.models.MEDIA_TYPE_IMAGE
 import com.devatrii.statussaver.models.MEDIA_TYPE_VIDEO
 import com.devatrii.statussaver.models.MediaModel
@@ -15,6 +16,7 @@ import com.devatrii.statussaver.utils.SharedPrefKeys
 import com.devatrii.statussaver.utils.SharedPrefUtils
 import com.devatrii.statussaver.utils.getFileExtension
 import com.devatrii.statussaver.utils.isStatusExist
+import java.io.File
 
 class StatusRepo(val context: Context) {
 
@@ -50,6 +52,8 @@ class StatusRepo(val context: Context) {
 
         fileDocument?.let {
             it.listFiles().forEach { file->
+
+
                 Log.d(TAG, "getAllStatuses: ${file.name}")
                 if (file.name != ".nomedia" && file.isFile) {
                     val isDownloaded = context.isStatusExist(file.name!!)
