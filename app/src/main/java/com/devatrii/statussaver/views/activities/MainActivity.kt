@@ -39,8 +39,10 @@ class MainActivity : AppCompatActivity() {
             val bundle = Bundle()
             bundle.putString(Constants.FRAGMENT_TYPE_KEY, Constants.TYPE_WHATSAPP_MAIN)
             replaceFragment(fragmentWhatsAppStatus, bundle)
-
-            bottomNavigationView.setOnItemSelectedListener {
+            toolBar.setNavigationOnClickListener {
+                drawerLayout.open()
+            }
+            navigationView.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.menu_status -> {
                         // whatsapp status
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                         val bundle = Bundle()
                         bundle.putString(Constants.FRAGMENT_TYPE_KEY, Constants.TYPE_WHATSAPP_MAIN)
                         replaceFragment(fragmentWhatsAppStatus, bundle)
+                        drawerLayout.close()
                     }
 
                     R.id.menu_business_status -> {
@@ -59,15 +62,17 @@ class MainActivity : AppCompatActivity() {
                             Constants.TYPE_WHATSAPP_BUSINESS
                         )
                         replaceFragment(fragmentWhatsAppStatus, bundle)
+                        drawerLayout.close()
                     }
 
                     R.id.menu_settings -> {
                         // settings
                         replaceFragment(FragmentSettings())
+                        drawerLayout.close()
                     }
                 }
 
-                return@setOnItemSelectedListener true
+                return@setNavigationItemSelectedListener true
             }
 
         }
