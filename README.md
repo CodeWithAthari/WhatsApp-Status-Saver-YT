@@ -1,3 +1,5 @@
+[![Ceasefire Now](https://badge.techforpalestine.org/default)](https://techforpalestine.org/learn-more)
+
 ![](https://github.com/CodeWithAthari/WhatsApp-Status-Saver-YT/blob/master/gallery/thumbnail.webp)
 # Status Saver App
 
